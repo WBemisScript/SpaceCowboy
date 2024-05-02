@@ -1,0 +1,76 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - DemonCore
+  - NonRobot
+  - Robot
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - Enemy
+  - Water
+  - UI
+  - Player
+  - Cover
+  - Ground
+  - Projectile
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: SetPiece
+    uniqueID: 1700641641
+    locked: 0
+  - name: Background
+    uniqueID: 2684614947
+    locked: 0
+  - name: Walls
+    uniqueID: 1729684913
+    locked: 0
+  - name: Arm
+    uniqueID: 2546374753
+    locked: 0
+  - name: Player
+    uniqueID: 3646142247
+    locked: 0
+  - name: Particals
+    uniqueID: 1836357177
+    locked: 0
+  - name: Ui
+    uniqueID: 2380617735
+    locked: 0
+  - name: UI 2
+    uniqueID: 3469027415
+    locked: 0
+  - name: Ui 3
+    uniqueID: 702948943
+    locked: 0
+  - name: Ui4
+    uniqueID: 3380311759
+    locked: 0
