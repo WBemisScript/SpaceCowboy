@@ -59,19 +59,13 @@ public class DemonCoreThrow : MonoBehaviour
                 {
                     OffFrames =0;
                     GameObject Core = Instantiate(DemonCoreObject, transform.position, Quaternion.identity);
-                    int Direction = 1;
+                    float Direction = 1;
                     FramesAlive = 0;
                     CurrectCore = Core;
                     DemonCoreLight = Core.GetComponent<Light2D>();
-                    if (PlayerMovement.Cam.ScreenToWorldPoint(Input.mousePosition).x > transform.position.x)
-                    {
-                        Direction = 1;
-                    }
-                    if (PlayerMovement.Cam.ScreenToWorldPoint(Input.mousePosition).x < transform.position.x)
-                    {
-                        Direction = -1;
-                    }
-                    Core.GetComponent<Rigidbody2D>().velocity = new Vector2(Speed * Direction, Speed / 2);
+                   Direction = PlayerMovement.RotatusApperattus.rotation;
+                    Core.GetComponent<Rigidbody2D>().rotation = Direction;
+                    Core.GetComponent<Rigidbody2D>().velocity = new Vector2(Speed * PlayerMovement.RotatusApperattus.transform.right.x, (PlayerMovement.RotatusApperattus.transform.right.y * Speed) * (Speed / 8  ));
                 }
             }
          
