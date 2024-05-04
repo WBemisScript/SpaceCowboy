@@ -58,11 +58,22 @@ public class ThreadRipperAi : MonoBehaviour
 
         if (Distance_From_Player < AggroRange)
         {
-            Aggro = true;
-            if (ImportantOnAggro == true)
+            Vector2 dir = Player_Movement.Player.transform.position - transform.position;
+            UnityEngine.Debug.Log(dir);
+            if (Physics2D.Raycast(transform.position, dir, 1000, ~Player_Movement.PlayerSystem.EnemyLayer))
             {
-                Info.Important = true;
+                RaycastHit2D CheckIfPlayer = Physics2D.Raycast(transform.position, dir, 1000, ~Player_Movement.PlayerSystem.EnemyLayer);
+                if (CheckIfPlayer.collider.gameObject.gameObject.GetComponent<Player_Movement>() != null)
+                {
+                    Aggro = true;
+                    if (ImportantOnAggro == true)
+                    {
+                        Info.Important = true;
+                    }
+                }
+
             }
+      
         }
         if (Health.Health <= 0)
         {

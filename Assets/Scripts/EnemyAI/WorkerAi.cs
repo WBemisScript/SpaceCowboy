@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class WorkerAi : MonoBehaviour
 {
@@ -51,7 +53,20 @@ public class WorkerAi : MonoBehaviour
 
             if (RangeFromPlayer < AggroDistance)
             {
-                Aggro = true;
+                Vector2 dir = Player_Movement.Player.transform.position - transform.position  ;
+                UnityEngine. Debug.Log(dir);
+              if (Physics2D.Raycast(transform.position, dir, 1000, ~Player_Movement.PlayerSystem.EnemyLayer) )
+                {
+                    RaycastHit2D CheckIfPlayer = Physics2D.Raycast(transform.position, dir, 1000, ~Player_Movement.PlayerSystem.EnemyLayer);
+                    if (CheckIfPlayer.collider.gameObject.gameObject.GetComponent<Player_Movement>()  != null)
+                    {
+                        Aggro = true;
+                    }
+             
+                }
+
+               
+
             }
             if (Aggro == true)
             {
