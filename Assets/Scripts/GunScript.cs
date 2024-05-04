@@ -181,6 +181,10 @@ public class GunScript : MonoBehaviour
                                             EnviromentSystem.SHOWNVIRO.RENDER_BLOOD(BloodPosition - new Vector3Int(1, 0, 0));
                                         }
                                     }
+                                    if (HitEnemy.collider.gameObject.tag == "KickDoor")
+                                    {
+                          HitEnemy.collider.gameObject.GetComponent<KickableDoorScript>().ForceOpenDoor();
+                                    }
                                     Debug.Log(HitEnemy.collider.gameObject.name);
                                     GameObject Partical = Instantiate(ParticalHit, HitEnemy.point, Quaternion.identity);
                                     Destroy(Partical, .7f);

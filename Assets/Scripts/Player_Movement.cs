@@ -12,6 +12,7 @@ public class Player_Movement : MonoBehaviour
     private float Horizontal;
     public static LevelSystem KillCount;
     public LevelSystem KillCountBase;
+    public LayerMask PlayerLayer;
     [Header("Physics")]
     public Rigidbody2D Rb;
     public float Speed; 
@@ -175,11 +176,25 @@ public class Player_Movement : MonoBehaviour
                         PlayerAnims.Play("Kick");
                         IsOnKickCooldown = true;
                         StartCoroutine(KickUWU());
-                        if (Physics2D.OverlapCircle(transform.position - new Vector3(0, .5f, 0), 1.5f, EnemyLayer))
+                        if (Physics2D.OverlapCircle(transform.position - new Vector3(0, .5f, 0), 1.5f, ~PlayerLayer))
                         {
-                            Collider2D[] EnemiesHit = Physics2D.OverlapCircleAll(transform.position - new Vector3(0, .5f, 0), 1.5f, EnemyLayer);
+                            Collider2D[] EnemiesHit = Physics2D.OverlapCircleAll(transform.position - new Vector3(0, .5f, 0), 1.5f, ~PlayerLayer);
                             foreach (Collider2D Enemy in EnemiesHit)
                             {
+                                if (Enemy.gameObject.GetComponent<KickableDoorScript>() != null)
+                                {
+                                    Enemy.gameObject.GetComponent<KickableDoorScript>().ForceOpenDoor();
+                                }
+                            }
+                        
+                        }
+                      
+                            if (Physics2D.OverlapCircle(transform.position - new Vector3(0, .5f, 0), 1.5f, EnemyLayer))
+                        {
+                            Collider2D[] EnemiesHit = Physics2D.OverlapCircleAll(transform.position - new Vector3(0, .5f, 0), 1.5f, EnemyLayer); 
+                            foreach (Collider2D Enemy in EnemiesHit)
+                            {
+
                                 MeleeHitSound.Play();
                                 Enemy.GetComponent<EnemyHealth>().Health -= Kickdamage;
                             }

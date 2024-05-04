@@ -5432,6 +5432,9 @@ MonoBehaviour:
   Health: {fileID: 4082679633929583358}
   Arm: {fileID: 4082679635023774151}
   KillCountBase: {fileID: 974649239747096529}
+  PlayerLayer:
+    serializedVersion: 2
+    m_Bits: 64
   Rb: {fileID: 4082679633929583303}
   Speed: 6
   SpeedMultiplier: 1
